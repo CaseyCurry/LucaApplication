@@ -56,15 +56,13 @@ module.exports = [{
     }, {
       test: /\.scss/,
       exclude: /node_modules/,
-      use: [{
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          loader: [
-            "css-loader",
-            "sass-loader"
-          ]
-        })
-      }]
+      use: ExtractTextPlugin.extract({
+        fallback: "style-loader",
+        use: [
+          "css-loader",
+          "sass-loader"
+        ]
+      })
     }]
   },
   resolve: {
