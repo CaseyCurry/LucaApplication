@@ -2,7 +2,6 @@
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 
 const html = {
@@ -22,7 +21,6 @@ module.exports = [{
     path: path.join(__dirname, "dist"),
     filename: "host.js"
   },
-  externals: [nodeExternals()],
   module: {
     rules: [{
       enforce: "pre",
@@ -68,11 +66,13 @@ module.exports = [{
       test: /\.scss/,
       exclude: /node_modules/,
       loader: ExtractTextPlugin.extract({
-        fallbackLoader: "style-loader",
-        loader: [
-          "css-loader",
-          "sass-loader"
-        ]
+        fallback: "style-loader",
+        use: [{
+          loader: [
+            "css-loader",
+            "sass-loader"
+          ]
+        }]
       })
     }]
   },
