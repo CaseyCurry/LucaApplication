@@ -1,16 +1,12 @@
 import React from "react";
 import Transactions from "./Transactions";
 import axios from "axios";
-import serviceRegistry from "luca-service-registry-library";
 
 const TransactionsContainer = () => {
   const categoriesApi = {
     client: axios,
     getUrl: () => {
-      return serviceRegistry.locate("categories-api")
-        .then(url => {
-          return `${url}/api/categories`;
-        });
+      return "http://192.168.56.110/api/categories";
     }
   };
   const checkingAccountService = <CheckingAccountService.App categoriesApi={categoriesApi}/>;

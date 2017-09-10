@@ -1,5 +1,3 @@
-import serviceRegistry from "luca-service-registry-library";
-
 const loadCss = (url) => {
   const sheet = document.createElement("link");
   sheet.rel = "stylesheet";
@@ -13,24 +11,10 @@ const loadScript = (url) => {
   document.body.appendChild(script);
 };
 
-const loadService = (serviceName, callback) => {
-  serviceRegistry.locate(serviceName)
-    .then(url => {
-      callback(url);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-};
-
 export default {
   loadResources: () => {
-    loadService("checking-account-client", (url) => {
-      loadCss(`${url}/checking-account.css`);
-      loadScript(`${url}/app.min.js`);
-    });
-    loadService("users-client", (url) => {
-      loadScript(`${url}/app.min.js`);
-    });
+    loadCss("http://192.168.56.110/client/checkingaccount/checking-account.css");
+    loadScript("http://192.168.56.110/client/checkingaccount/app.min.js");
+    loadScript("http://192.168.56.110/client/users/app.min.js");
   }
 };
