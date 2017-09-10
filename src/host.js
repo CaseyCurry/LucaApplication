@@ -11,12 +11,12 @@ const home = "index.html";
 const app = express();
 app.use(helmet());
 
+app.use(express.static(staticFileLocation));
+
 app.get("/", (request, response) => {
   response.send(`${staticFileLocation}/${home}`);
   response.end();
 });
-
-app.use(express.static(staticFileLocation));
 
 const port = 8081;
 
