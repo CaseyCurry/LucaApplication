@@ -31,7 +31,7 @@
           "Name": "luca-app",
           "Tags": [
             "luca",
-            "client"
+            "app"
           ],
           "PortLabel": "app",
           "Checks": [{
